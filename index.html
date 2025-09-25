@@ -127,7 +127,7 @@
             </div>
 
             <!-- Load Saved Layout Card -->
-            <div class="border border-[#444CE7] rounded-xl p-8 transition-all duration-300 cursor-pointer group">
+            <div id="loadSavedLayoutCard" class="border border-[#444CE7] rounded-xl p-8 transition-all duration-300 cursor-pointer group">
                 <div class="text-center">
                     <div class="w-16 h-16 rounded-lg flex items-center justify-center mx-auto mb-6 transition-colors duration-300">
                         <svg width="64" height="64" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -465,6 +465,40 @@
                     <button id="confirmSaveBtn" class="bg-[#444CE7] text-white px-4 py-2 rounded-lg hover:bg-[#3538CD] transition-colors">
                         Save
                     </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Load Saved Layouts Modal -->
+        <div id="loadLayoutModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+            <div class="bg-[#161725] rounded-xl p-6 w-full max-w-md mx-4 border border-[#2A2A2A] max-h-[80vh] flex flex-col">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-[18px] font-medium text-white">Load Saved Layouts</h3>
+                    <button id="closeLoadModal" class="text-white hover:text-gray-300 transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                
+                <!-- Search Bar -->
+                <div class="mb-4">
+                    <div class="relative">
+                        <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                        <input 
+                            type="text" 
+                            id="layoutSearchInput"
+                            placeholder="Search for layouts"
+                            class="w-full pl-10 pr-4 py-3 bg-[#2A2A2A] border border-[#2A2A2A] rounded-lg text-white placeholder-gray-400 focus:border-[#444CE7] focus:outline-none transition-colors"
+                        >
+                    </div>
+                </div>
+                
+                <!-- Layouts List -->
+                <div id="layoutsList" class="flex-1 overflow-y-auto space-y-2">
+                    <!-- Layouts will be dynamically added here -->
                 </div>
             </div>
         </div>
@@ -849,15 +883,115 @@
                 console.log('Creating layout:', layoutName);
                 console.log('Selected tools:', selectedTools);
                 
-                // Close current modal and open Add Layout modal
-                closeModalFunction();
-                
-                // Open Add Layout modal
-                document.getElementById('addLayoutModal').classList.remove('hidden');
+                // Check if this is Update Layout mode
+                if (this.textContent === 'Update Layout') {
+                    // Close current modal and show save confirmation
+                    closeModalFunction();
+                    
+                    // Update the confirmation modal text
+                    const saveModal = document.getElementById('saveLayoutModal');
+                    const confirmText = saveModal.querySelector('p');
+                    if (confirmText) {
+                        confirmText.textContent = `Are you sure you want to save '${layoutName}'?`;
+                    }
+                    
+                    // Show save confirmation modal
+                    saveModal.classList.remove('hidden');
+                } else {
+                    // Original Create Layout behavior
+                    closeModalFunction();
+                    
+                    // Open Add Layout modal
+                    document.getElementById('addLayoutModal').classList.remove('hidden');
+                }
                 
                 // Add your layout creation logic here
             }
         });
+
+        // Load Saved Layout Card functionality
+        const loadSavedLayoutCard = document.getElementById('loadSavedLayoutCard');
+        if (loadSavedLayoutCard) {
+            loadSavedLayoutCard.addEventListener('click', function() {
+                // Open Load Saved Layouts modal
+                document.getElementById('loadLayoutModal').classList.remove('hidden');
+                loadSavedLayouts();
+            });
+        }
+
+        // Load Saved Layouts Modal functionality
+        const loadLayoutModal = document.getElementById('loadLayoutModal');
+        const closeLoadModal = document.getElementById('closeLoadModal');
+        const layoutSearchInput = document.getElementById('layoutSearchInput');
+        const layoutsList = document.getElementById('layoutsList');
+
+        function loadSavedLayouts() {
+            // Clear existing layouts
+            layoutsList.innerHTML = '';
+            
+            // Get saved layouts from localStorage
+            const savedLayouts = JSON.parse(localStorage.getItem('savedLayouts') || '[]');
+            
+            // Create layout items
+            savedLayouts.forEach((layout, index) => {
+                const layoutItem = document.createElement('div');
+                layoutItem.className = 'p-3 bg-[#2A2A2A] rounded-lg cursor-pointer hover:bg-[#3A3A3A] transition-colors group flex items-center justify-between';
+                layoutItem.innerHTML = `
+                    <span class="text-white text-[16px]">${layout.name}</span>
+                    <button class="delete-layout-btn opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-red-400 hover:text-red-300 p-1">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                        </svg>
+                    </button>
+                `;
+                
+                // Add click functionality to load layout
+                layoutItem.addEventListener('click', function(e) {
+                    // Don't trigger if delete button is clicked
+                    if (e.target.closest('.delete-layout-btn')) {
+                        return;
+                    }
+                    console.log(`Loading layout: ${layout.name}`);
+                    // Here you can add logic to actually load the layout
+                    closeLoadModalFunc();
+                });
+                
+                // Add delete functionality
+                const deleteBtn = layoutItem.querySelector('.delete-layout-btn');
+                deleteBtn.addEventListener('click', function(e) {
+                    e.stopPropagation(); // Prevent layout item click
+                    
+                    // Remove layout from localStorage
+                    const updatedLayouts = savedLayouts.filter((_, i) => i !== index);
+                    localStorage.setItem('savedLayouts', JSON.stringify(updatedLayouts));
+                    
+                    // Refresh the layouts list
+                    loadSavedLayouts();
+                    
+                    console.log(`Deleted layout: ${layout.name}`);
+                });
+                
+                layoutsList.appendChild(layoutItem);
+            });
+        }
+
+        function closeLoadModalFunc() {
+            loadLayoutModal.classList.add('hidden');
+        }
+
+        // Event listeners for Load Layout modal
+        if (closeLoadModal) {
+            closeLoadModal.addEventListener('click', closeLoadModalFunc);
+        }
+
+        // Close modal when clicking outside
+        if (loadLayoutModal) {
+            loadLayoutModal.addEventListener('click', function(e) {
+                if (e.target === loadLayoutModal) {
+                    closeLoadModalFunc();
+                }
+            });
+        }
 
         // Add Layout Modal functionality
         const addLayoutModal = document.getElementById('addLayoutModal');
