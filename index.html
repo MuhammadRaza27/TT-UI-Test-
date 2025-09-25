@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Window Layout</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.cdnfonts.com/css/innovator-grotesk');
+        
+        * {
+            font-family: 'Innovator Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+        }
+        
+        body, html {
+            font-family: 'Innovator Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Innovator Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+        }
+        
+        p, span, div, button, input, textarea {
+            font-family: 'Innovator Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#191D40',
+                        secondary: '#A78BFA',
+                        dark: '#0F0F0F',
+                        'dark-gray': '#1A1A1A',
+                        'light-gray': '#2A2A2A',
+                    },
+                    fontFamily: {
+                        'innovator': ['Innovator Grotesk', 'system-ui', 'sans-serif'],
+                        'sans': ['Innovator Grotesk', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-dark font-sans min-h-screen">
+    <!-- Main Container -->
+    <div class="min-h-screen flex flex-col items-center justify-center px-4 py-8">
+        <!-- Header Section -->
+        <div class="text-center mb-10">
+            <h1 class="text-[36px] font-medium text-white mb-1">
+                Multi-Window Layout
+            </h1>
+            <p class="text-[16px] text-[#C0CBE1] max-w-2xl mx-auto">
+                Easily build, save, and load layouts across multiple browser windows and screens.
+            </p>
+        </div>
+
+        <!-- Action Cards Section -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+            <!-- Create New Layout Card -->
+            <div class="border border-[#444CE7] rounded-xl p-8 hover:border-secondary transition-all duration-300 cursor-pointer group">
+                <div class="text-center">
+                    <div class="w-16 h-16 rounded-lg flex items-center justify-center mx-auto mb-6 group-hover:bg-secondary transition-colors duration-300">
+                        <svg width="64" height="64" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g filter="url(#filter0_d_10885_3890)">
+                                <path d="M24 1.33337V38.6667M5.33337 20H42.6667" stroke="#444CE7" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                            <defs>
+                                <filter id="filter0_d_10885_3890" x="0.583374" y="0.583374" width="46.8334" height="46.8334" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                                    <feOffset dy="4"/>
+                                    <feGaussianBlur stdDeviation="2"/>
+                                    <feComposite in2="hardAlpha" operator="out"/>
+                                    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+                                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_10885_3890"/>
+                                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_10885_3890" result="shape"/>
+                                </filter>
+                            </defs>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl text-[#828DA4] mb-3 ">Create New Layout</h3>
+                    <p class="text-[#828DA4]">Start fresh with empty windows and add tools.</p>
+                </div>
+            </div>
+
+            <!-- Load Saved Layout Card -->
+            <div class="border border-[#444CE7] rounded-xl p-8 transition-all duration-300 cursor-pointer group">
+                <div class="text-center">
+                    <div class="w-16 h-16 rounded-lg flex items-center justify-center mx-auto mb-6 transition-colors duration-300">
+                        <svg width="64" height="64" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M25 25L49 25M25 1L25 49M13.8 1H36.2C40.6804 1 42.9206 1 44.6319 1.87195C46.1372 2.63893 47.3611 3.86278 48.1281 5.36808C49 7.07937 49 9.31958 49 13.8V36.2C49 40.6804 49 42.9206 48.1281 44.6319C47.3611 46.1372 46.1372 47.3611 44.6319 48.1281C42.9206 49 40.6804 49 36.2 49H13.8C9.31958 49 7.07937 49 5.36808 48.1281C3.86278 47.3611 2.63893 46.1372 1.87195 44.6319C1 42.9206 1 40.6804 1 36.2V13.8C1 9.31958 1 7.07937 1.87195 5.36808C2.63893 3.86278 3.86278 2.63893 5.36808 1.87195C7.07937 1 9.31958 1 13.8 1Z" stroke="#444CE7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl text-[#828DA4] mb-3">Load Saved Layout</h3>
+                    <p class="text-[#828DA4]">Open a layout you saved earlier with its tools.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Create Layout Modal -->
+        <div id="createLayoutModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+            <div class="bg-[#12121E]  rounded-xl max-w-2xl w-full max-h-[90vh] flex flex-col">
+                <!-- Modal Header -->
+                <div class="flex items-center justify-between p-6 border-b border-gray-700">
+                    <h2 class="text-2xl font-bold text-white">Create Layout</h2>
+                    <button id="closeModal" class="text-gray-400 hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="#414E69" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Modal Body -->
+                <div class="p-6 grid-cols-1 overflow-y-scroll">
+                    <!-- Layout Name Input -->
+                    <div class="mb-8">
+                        <label class="block text-[14px] text-[#636E85] mb-3">Layout Name</label>
+                        <input 
+                            type="text[#636E85]" 
+                            id="layoutName" 
+                            placeholder="Type layout name"
+                            class="w-full px-4 py-3 bg-[#161725] border border-[#161725] rounded-lg text-white placeholder-gray-400 focus:border-primary focus:outline-none transition-colors"
+                        >
+                    </div>
+
+                    <!-- Add Tools Section -->
+                    <div>
+                        <label class="block text-[16px] text-[#A1ACC2] font-medium mb-4">Add Tools</label>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                            <!-- Bar Chart -->
+                            <div class="tool-item flex items-center justify-between bg-[#161725] rounded-lg p-3 transition-colors" data-tool="bar-chart" data-added="false">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 rounded-lg flex items-center justify-center">
+                                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M10.6667 9.33333V22.6667M16 14.6667V22.6667M21.3333 20V22.6667M10.4 28H21.6C23.8402 28 24.9603 28 25.816 27.564C26.5686 27.1805 27.1805 26.5686 27.564 25.816C28 24.9603 28 23.8402 28 21.6V10.4C28 8.15979 28 7.03969 27.564 6.18404C27.1805 5.43139 26.5686 4.81947 25.816 4.43597C24.9603 4 23.8402 4 21.6 4H10.4C8.15979 4 7.03969 4 6.18404 4.43597C5.43139 4.81947 4.81947 5.43139 4.43597 6.18404C4 7.03969 4 8.15979 4 10.4V21.6C4 23.8402 4 24.9603 4.43597 25.816C4.81947 26.5686 5.43139 27.1805 6.18404 27.564C7.03969 28 8.15979 28 10.4 28Z" stroke="#636E85" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                    <span class="text-white text-[18px]">Charts</span>
+                                </div>
+                                <button class="tool-btn w-8 h-8 rounded-lg flex items-center justify-center hover:bg-[#191D40] transition-colors">
+                                    <svg class="w-14 h-14 text-white" fill="none" stroke="#444CE7" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <!-- Most Active Tickers -->
+                            <div class="tool-item flex items-center justify-between bg-[#161725] rounded-lg p-3 transition-colors" data-tool="most-active-tickers" data-added="false">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 rounded-lg flex items-center justify-center">
+                                        <svg class="w-8 h-8 text-white" fill="none" stroke="#636E85" viewBox="0 0 29 30">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.8334 9.66663V5.66663L23.8334 1.66663L25.1667 4.33329L27.8334 5.66663L23.8334 9.66663H19.8334ZM19.8334 9.66663L14.5 14.9999M27.8334 15C27.8334 22.3638 21.8639 28.3333 14.5001 28.3333C7.13628 28.3333 1.16675 22.3638 1.16675 15C1.16675 7.63616 7.13628 1.66663 14.5001 1.66663M21.1667 15C21.1667 18.6819 18.182 21.6666 14.5001 21.6666C10.8182 21.6666 7.83341 18.6819 7.83341 15C7.83341 11.3181 10.8182 8.33329 14.5001 8.33329"></path>
+                                        </svg>
+                                    </div>
+                                    <span class="text-white text-[18px]">Most Active Tickers</span>
+                                </div>
+                                <button class="tool-btn w-8 h-8 rounded-lg flex items-center justify-center hover:bg-[#191D40] transition-colors">
+                                    <svg class="w-14 h-14 text-white" fill="none" stroke="#444CE7" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <!-- Momo Most Mentioned -->
+                            <div class="tool-item flex items-center justify-between bg-[#161725] rounded-lg p-3 transition-colors" data-tool="momo-most-mentioned" data-added="false">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 flex items-center justify-center">
+                                        <svg class="w-14 h-14 text-white" fill="none" stroke="#636E85" viewBox="0 0 32 32">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M28 28H8.26667C6.77319 28 6.02646 28 5.45603 27.7094C4.95426 27.4537 4.54631 27.0457 4.29065 26.544C4 25.9735 4 25.2268 4 23.7333V4M9.33333 7.33333V23.3333M15.3333 11.3333V23.3333M21.3333 15.3333V23.3333M27.3333 19.3333V23.3333"></path>
+                                        </svg>
+                                    </div>
+                                    <span class="text-white text-[18px]">Momo Most Mentioned</span>
+                                </div>
+                                <button class="tool-btn w-8 h-8 rounded-lg flex items-center justify-center hover:bg-[#191D40] transition-colors">
+                                    <svg class="w-14 h-14 text-white" fill="none" stroke="#444CE7" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <!-- Events -->
+                            <div class="tool-item flex items-center justify-between bg-[#161725] rounded-lg p-3 transition-colors" data-tool="events" data-added="false">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 flex items-center justify-center">
+                                        <svg class="w-14 h-14 text-white" fill="none" stroke="#636E85" viewBox="0 0 29 30">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.8334 9.66663V5.66663L23.8334 1.66663L25.1667 4.33329L27.8334 5.66663L23.8334 9.66663H19.8334ZM19.8334 9.66663L14.5 14.9999M27.8334 15C27.8334 22.3638 21.8639 28.3333 14.5001 28.3333C7.13628 28.3333 1.16675 22.3638 1.16675 15C1.16675 7.63616 7.13628 1.66663 14.5001 1.66663M21.1667 15C21.1667 18.6819 18.182 21.6666 14.5001 21.6666C10.8182 21.6666 7.83341 18.6819 7.83341 15C7.83341 11.3181 10.8182 8.33329 14.5001 8.33329"></path>
+                                        </svg>
+                                    </div>
+                                    <span class="text-white text-[18px]">Most Active Tickers</span>
+                                </div>
+                                <button class="tool-btn w-8 h-8 rounded-lg flex items-center justify-center hover:bg-[#191D40] transition-colors">
+                                    <svg class="w-14 h-14 text-white" fill="none" stroke="#444CE7" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <!-- Most Active Tickers (Duplicate) -->
+                            <div class="tool-item flex items-center justify-between bg-[#161725] rounded-lg p-3 transition-colors" data-tool="most-active-tickers-2" data-added="false">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 flex items-center justify-center">
+                                        <svg class="w-14 h-14 text-white" fill="none" stroke="#636E85" viewBox="0 0 32 32">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M28 13.3333H4M21.3333 2.66663V7.99996M10.6667 2.66663V7.99996M10.4 29.3333H21.6C23.8402 29.3333 24.9603 29.3333 25.816 28.8973C26.5686 28.5138 27.1805 27.9019 27.564 27.1493C28 26.2936 28 25.1735 28 22.9333V11.7333C28 9.49308 28 8.37298 27.564 7.51733C27.1805 6.76468 26.5686 6.15276 25.816 5.76927C24.9603 5.33329 23.8402 5.33329 21.6 5.33329H10.4C8.15979 5.33329 7.03969 5.33329 6.18404 5.76927C5.43139 6.15276 4.81947 6.76468 4.43597 7.51733C4 8.37298 4 9.49308 4 11.7333V22.9333C4 25.1735 4 26.2936 4.43597 27.1493C4.81947 27.9019 5.43139 28.5138 6.18404 28.8973C7.03969 29.3333 8.15979 29.3333 10.4 29.3333Z"></path>
+                                        </svg>
+                                    </div>
+                                    <span class="text-white text-[18px]">Events</span>
+                                </div>
+                                <button class="tool-btn w-8 h-8 rounded-lg flex items-center justify-center hover:bg-[#191D40] transition-colors">
+                                    <svg class="w-14 h-14 text-white" fill="none" stroke="#444CE7" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <!-- Events (Duplicate) -->
+                            <div class="tool-item flex items-center justify-between bg-[#161725] rounded-lg p-3 transition-colors" data-tool="events-2" data-added="false">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 flex items-center justify-center">
+                                        <svg class="w-14 h-14 text-white" fill="#636E85" viewBox="0 0 33 32">
+                                            <path d="M7.92857 4C6.0375 4 4.5 5.5375 4.5 7.42857V24.5714C4.5 26.4625 6.0375 28 7.92857 28H25.0714C26.9625 28 28.5 26.4625 28.5 24.5714V7.42857C28.5 5.5375 26.9625 4 25.0714 4H7.92857ZM23.8446 8.5L18.2839 14.8536L24.825 23.5H19.7036L15.6964 18.2554L11.1054 23.5H8.56071L14.5071 16.7018L8.23393 8.5H13.4839L17.1107 13.2946L21.3 8.5H23.8446ZM21.8196 21.9786L12.7179 9.94107H11.2018L20.4054 21.9786H21.8143H21.8196Z"/>
+                                        </svg>
+                                    </div>
+                                    <span class="text-white text-[18px]">X/Twitter</span>
+                                </div>
+                                <button class="tool-btn w-8 h-8 rounded-lg flex items-center justify-center hover:bg-[#191D40] transition-colors">
+                                    <svg class="w-14 h-14 text-white" fill="none" stroke="#444CE7" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <!-- Most Active Tickers (Third) -->
+                            <div class="tool-item flex items-center justify-between bg-[#161725] rounded-lg p-3 transition-colors" data-tool="most-active-tickers-3" data-added="false">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 rounded-lg flex items-center justify-center">
+                                        <svg class="w-8 h-8 text-white" fill="none" stroke="#636E85" viewBox="0 0 29 30">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.8334 9.66663V5.66663L23.8334 1.66663L25.1667 4.33329L27.8334 5.66663L23.8334 9.66663H19.8334ZM19.8334 9.66663L14.5 14.9999M27.8334 15C27.8334 22.3638 21.8639 28.3333 14.5001 28.3333C7.13628 28.3333 1.16675 22.3638 1.16675 15C1.16675 7.63616 7.13628 1.66663 14.5001 1.66663M21.1667 15C21.1667 18.6819 18.182 21.6666 14.5001 21.6666C10.8182 21.6666 7.83341 18.6819 7.83341 15C7.83341 11.3181 10.8182 8.33329 14.5001 8.33329"></path>
+                                        </svg>
+                                    </div>
+                                    <span class="text-white text-[18px]">Most Active Tickers</span>
+                                </div>
+                                <button class="tool-btn w-8 h-8 rounded-lg flex items-center justify-center hover:bg-[#191D40] transition-colors">
+                                    <svg class="w-14 h-14 text-white" fill="none" stroke="#444CE7" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <!-- X/Twitter -->
+                            <div class="tool-item flex items-center justify-between bg-[#161725] rounded-lg p-3 transition-colors" data-tool="x-twitter" data-added="false">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 flex items-center justify-center">
+                                        <svg class="w-14 h-14 text-white" fill="none" stroke="#636E85" viewBox="0 0 33 32">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16.5001 16L3.60912 12.594C2.77974 15.7331 3.12426 19.0669 4.57804 21.9701C6.03182 24.8732 8.49496 27.1461 11.5053 28.3624L16.5001 16ZM16.5001 16L16.6397 2.66736C13.6808 2.63637 10.7957 3.59053 8.43878 5.37956C6.08182 7.16859 4.38694 9.69083 3.62109 12.549L16.5001 16ZM29.8334 16C29.8334 23.3638 23.8639 29.3333 16.5001 29.3333C9.1363 29.3333 3.16676 23.3638 3.16676 16C3.16676 8.63616 9.1363 2.66663 16.5001 2.66663C23.8639 2.66663 29.8334 8.63616 29.8334 16Z"></path>
+                                        </svg>
+                                    </div>
+                                    <span class="text-white text-[18px]">Charts</span>
+                                </div>
+                                <button class="tool-btn w-8 h-8 rounded-lg flex items-center justify-center hover:bg-[#191D40] transition-colors">
+                                    <svg class="w-14 h-14 text-white" fill="none" stroke="#444CE7" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <!-- Pie Chart -->
+                            <div class="tool-item flex items-center justify-between bg-[#161725] rounded-lg p-3 transition-colors" data-tool="pie-chart" data-added="false">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 flex items-center justify-center">
+                                        <svg class="w-14 h-14 text-white" fill="none" stroke="#636E85" viewBox="0 0 32 32">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M28 13.3333H4M21.3333 2.66663V7.99996M10.6667 2.66663V7.99996M10.4 29.3333H21.6C23.8402 29.3333 24.9603 29.3333 25.816 28.8973C26.5686 28.5138 27.1805 27.9019 27.564 27.1493C28 26.2936 28 25.1735 28 22.9333V11.7333C28 9.49308 28 8.37298 27.564 7.51733C27.1805 6.76468 26.5686 6.15276 25.816 5.76927C24.9603 5.33329 23.8402 5.33329 21.6 5.33329H10.4C8.15979 5.33329 7.03969 5.33329 6.18404 5.76927C5.43139 6.15276 4.81947 6.76468 4.43597 7.51733C4 8.37298 4 9.49308 4 11.7333V22.9333C4 25.1735 4 26.2936 4.43597 27.1493C4.81947 27.9019 5.43139 28.5138 6.18404 28.8973C7.03969 29.3333 8.15979 29.3333 10.4 29.3333Z"></path>
+                                        </svg>
+                                    </div>
+                                    <span class="text-white text-[18px]">Events</span>
+                                </div>
+                                <button class="tool-btn w-8 h-8 rounded-lg flex items-center justify-center hover:bg-[#191D40] transition-colors">
+                                    <svg class="w-14 h-14 text-white" fill="none" stroke="#444CE7" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <!-- Line Chart -->
+                                <div class="tool-item flex items-center justify-between bg-[#161725] rounded-lg p-3 transition-colors" data-tool="line-chart" data-added="false">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 flex items-center justify-center">
+                                        <svg class="w-14 h-14 text-white" fill="#636E85" viewBox="0 0 33 32">
+                                            <path d="M7.92857 4C6.0375 4 4.5 5.5375 4.5 7.42857V24.5714C4.5 26.4625 6.0375 28 7.92857 28H25.0714C26.9625 28 28.5 26.4625 28.5 24.5714V7.42857C28.5 5.5375 26.9625 4 25.0714 4H7.92857ZM23.8446 8.5L18.2839 14.8536L24.825 23.5H19.7036L15.6964 18.2554L11.1054 23.5H8.56071L14.5071 16.7018L8.23393 8.5H13.4839L17.1107 13.2946L21.3 8.5H23.8446ZM21.8196 21.9786L12.7179 9.94107H11.2018L20.4054 21.9786H21.8143H21.8196Z"/>
+                                        </svg>
+                                    </div>
+                                    <span class="text-white text-[18px]">X/Twiter</span>
+                                </div>
+                                <button class="tool-btn w-8 h-8 rounded-lg flex items-center justify-center transition-colors">
+                                    <svg class="w-14 h-14 text-white" fill="none" stroke="#444CE7" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <!-- Area Chart -->
+                                <div class="tool-item flex items-center justify-between bg-[#161725] rounded-lg p-3 transition-colors" data-tool="area-chart" data-added="false">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 flex items-center justify-center">
+                                        <svg class="w-14 h-14 text-white" fill="none" stroke="#636E85" viewBox="0 0 29 30">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.8334 9.66663V5.66663L23.8334 1.66663L25.1667 4.33329L27.8334 5.66663L23.8334 9.66663H19.8334ZM19.8334 9.66663L14.5 14.9999M27.8334 15C27.8334 22.3638 21.8639 28.3333 14.5001 28.3333C7.13628 28.3333 1.16675 22.3638 1.16675 15C1.16675 7.63616 7.13628 1.66663 14.5001 1.66663M21.1667 15C21.1667 18.6819 18.182 21.6666 14.5001 21.6666C10.8182 21.6666 7.83341 18.6819 7.83341 15C7.83341 11.3181 10.8182 8.33329 14.5001 8.33329"></path>
+                                        </svg>
+                                    </div>
+                                    <span class="text-white text-[18px]">Most Active Tickers</span>
+                                </div>
+                                <button class="tool-btn w-8 h-8 rounded-lg flex items-center justify-center hover:bg-[#191D40] transition-colors">
+                                    <svg class="w-14 h-14 text-white" fill="none" stroke="#444CE7" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <!-- Candlestick Chart -->
+                            <div class="tool-item flex items-center justify-between bg-[#161725] rounded-lg p-3 transition-colors" data-tool="candlestick-chart" data-added="false">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 flex items-center justify-center">
+                                        <svg class="w-14 h-14 text-white" fill="none" stroke="#636E85" viewBox="0 0 32 32">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.6667 9.33333V22.6667M16 14.6667V22.6667M21.3333 20V22.6667M10.4 28H21.6C23.8402 28 24.9603 28 25.816 27.564C26.5686 27.1805 27.1805 26.5686 27.564 25.816C28 24.9603 28 23.8402 28 21.6V10.4C28 8.15979 28 7.03969 27.564 6.18404C27.1805 5.43139 26.5686 4.81947 25.816 4.43597C24.9603 4 23.8402 4 21.6 4H10.4C8.15979 4 7.03969 4 6.18404 4.43597C5.43139 4.81947 4.81947 5.43139 4.43597 6.18404C4 7.03969 4 8.15979 4 10.4V21.6C4 23.8402 4 24.9603 4.43597 25.816C4.81947 26.5686 5.43139 27.1805 6.18404 27.564C7.03969 28 8.15979 28 10.4 28Z"></path>
+                                        </svg>
+                                    </div>
+                                    <span class="text-white text-[18px]">Charts</span>
+                                </div>
+                                <button class="tool-btn w-8 h-8 rounded-lg flex items-center justify-center hover:bg-[#191D40] transition-colors">
+                                    <svg class="w-14 h-14 text-white" fill="none" stroke="#444CE7" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Footer -->
+                <div class="flex items-center justify-end space-x-3 p-6 border-t border-gray-700 flex-shrink-0">
+                    <button id="cancelBtn" class="px-6 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-500 transition-colors">
+                        Cancel
+                    </button>
+                    <button id="createBtn" class="px-6 py-2 bg-gray-600 text-white rounded-lg transition-colors hover:bg-gray-500 disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                        Create Layout
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add Layout Modal -->
+        <div id="addLayoutModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+            <div class="bg-[#12121E]  rounded-xl max-w-2xl w-full max-h-[90vh] flex flex-col">
+                <!-- Modal Header -->
+                <div class="flex items-center justify-between p-6 border-b border-gray-700">
+                    <h2 class="text-2xl font-bold text-white">Add Layout</h2>
+                    <button id="closeAddLayoutModal" class="text-gray-400 hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="#414E69" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Modal Body -->
+                <div class="p-6 grid-cols-1 overflow-y-scroll">
+                    <!-- Tools Section -->
+                    <div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                            <!-- Bar Chart -->
+                            <div class="tool-item flex items-center justify-between bg-[#161725] rounded-lg p-3 transition-colors" data-tool="bar-chart" data-added="false">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 rounded-lg flex items-center justify-center">
+                                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M10.6667 9.33333V22.6667M16 14.6667V22.6667M21.3333 20V22.6667M10.4 28H21.6C23.8402 28 24.9603 28 25.816 27.564C26.5686 27.1805 27.1805 26.5686 27.564 25.816C28 24.9603 28 23.8402 28 21.6V10.4C28 8.15979 28 7.03969 27.564 6.18404C27.1805 5.43139 26.5686 4.81947 25.816 4.43597C24.9603 4 23.8402 4 21.6 4H10.4C8.15979 4 7.03969 4 6.18404 4.43597C5.43139 4.81947 4.81947 5.43139 4.43597 6.18404C4 7.03969 4 8.15979 4 10.4V21.6C4 23.8402 4 24.9603 4.43597 25.816C4.81947 26.5686 5.43139 27.1805 6.18404 27.564C7.03969 28 8.15979 28 10.4 28Z" stroke="#636E85" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                    <span class="text-white text-[18px]">Charts</span>
+                                </div>
+                                <button class="tool-btn w-8 h-8 rounded-lg flex items-center justify-center hover:bg-[#191D40] transition-colors">
+                                    <svg class="w-14 h-14 text-white" fill="none" stroke="#444CE7" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <!-- Most Active Tickers -->
+                            <div class="tool-item flex items-center justify-between bg-[#161725] rounded-lg p-3 transition-colors" data-tool="most-active-tickers" data-added="false">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 rounded-lg flex items-center justify-center">
+                                        <svg class="w-8 h-8 text-white" fill="none" stroke="#636E85" viewBox="0 0 29 30">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.8334 9.66663V5.66663L23.8334 1.66663L25.1667 4.33329L27.8334 5.66663L23.8334 9.66663H19.8334ZM19.8334 9.66663L14.5 14.9999M27.8334 15C27.8334 22.3638 21.8639 28.3333 14.5001 28.3333C7.13628 28.3333 1.16675 22.3638 1.16675 15C1.16675 7.63616 7.13628 1.66663 14.5001 1.66663M21.1667 15C21.1667 18.6819 18.182 21.6666 14.5001 21.6666C10.8182 21.6666 7.83341 18.6819 7.83341 15C7.83341 11.3181 10.8182 8.33329 14.5001 8.33329"></path>
+                                        </svg>
+                                    </div>
+                                    <span class="text-white text-[18px]">Most Active Tickers</span>
+                                </div>
+                                <button class="tool-btn w-8 h-8 rounded-lg flex items-center justify-center hover:bg-[#191D40] transition-colors">
+                                    <svg class="w-14 h-14 text-white" fill="none" stroke="#444CE7" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <!-- Momo Most Mentioned -->
+                            <div class="tool-item flex items-center justify-between bg-[#161725] rounded-lg p-3 transition-colors" data-tool="momo-most-mentioned" data-added="false">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 flex items-center justify-center">
+                                        <svg class="w-14 h-14 text-white" fill="none" stroke="#636E85" viewBox="0 0 32 32">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M28 28H8.26667C6.77319 28 6.02646 28 5.45603 27.7094C4.95426 27.4537 4.54631 27.0457 4.29065 26.544C4 25.9735 4 25.2268 4 23.7333V4M9.33333 7.33333V23.3333M15.3333 11.3333V23.3333M21.3333 15.3333V23.3333M27.3333 19.3333V23.3333"></path>
+                                        </svg>
+                                    </div>
+                                    <span class="text-white text-[18px]">Momo Most Mentioned</span>
+                                </div>
+                                <button class="tool-btn w-8 h-8 rounded-lg flex items-center justify-center hover:bg-[#191D40] transition-colors">
+                                    <svg class="w-14 h-14 text-white" fill="none" stroke="#444CE7" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <!-- Events -->
+                            <div class="tool-item flex items-center justify-between bg-[#161725] rounded-lg p-3 transition-colors" data-tool="events" data-added="false">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 flex items-center justify-center">
+                                        <svg class="w-14 h-14 text-white" fill="none" stroke="#636E85" viewBox="0 0 29 30">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.8334 9.66663V5.66663L23.8334 1.66663L25.1667 4.33329L27.8334 5.66663L23.8334 9.66663H19.8334ZM19.8334 9.66663L14.5 14.9999M27.8334 15C27.8334 22.3638 21.8639 28.3333 14.5001 28.3333C7.13628 28.3333 1.16675 22.3638 1.16675 15C1.16675 7.63616 7.13628 1.66663 14.5001 1.66663M21.1667 15C21.1667 18.6819 18.182 21.6666 14.5001 21.6666C10.8182 21.6666 7.83341 18.6819 7.83341 15C7.83341 11.3181 10.8182 8.33329 14.5001 8.33329"></path>
+                                        </svg>
+                                    </div>
+                                    <span class="text-white text-[18px]">Most Active Tickers</span>
+                                </div>
+                                <button class="tool-btn w-8 h-8 rounded-lg flex items-center justify-center hover:bg-[#191D40] transition-colors">
+                                    <svg class="w-14 h-14 text-white" fill="none" stroke="#444CE7" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <!-- Most Active Tickers (Duplicate) -->
+                            <div class="tool-item flex items-center justify-between bg-[#161725] rounded-lg p-3 transition-colors" data-tool="most-active-tickers-2" data-added="false">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 flex items-center justify-center">
+                                        <svg class="w-14 h-14 text-white" fill="none" stroke="#636E85" viewBox="0 0 32 32">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M28 13.3333H4M21.3333 2.66663V7.99996M10.6667 2.66663V7.99996M10.4 29.3333H21.6C23.8402 29.3333 24.9603 29.3333 25.816 28.8973C26.5686 28.5138 27.1805 27.9019 27.564 27.1493C28 26.2936 28 25.1735 28 22.9333V11.7333C28 9.49308 28 8.37298 27.564 7.51733C27.1805 6.76468 26.5686 6.15276 25.816 5.76927C24.9603 5.33329 23.8402 5.33329 21.6 5.33329H10.4C8.15979 5.33329 7.03969 5.33329 6.18404 5.76927C5.43139 6.15276 4.81947 6.76468 4.43597 7.51733C4 8.37298 4 9.49308 4 11.7333V22.9333C4 25.1735 4 26.2936 4.43597 27.1493C4.81947 27.9019 5.43139 28.5138 6.18404 28.8973C7.03969 29.3333 8.15979 29.3333 10.4 29.3333Z"></path>
+                                        </svg>
+                                    </div>
+                                    <span class="text-white text-[18px]">Events</span>
+                                </div>
+                                <button class="tool-btn w-8 h-8 rounded-lg flex items-center justify-center hover:bg-[#191D40] transition-colors">
+                                    <svg class="w-14 h-14 text-white" fill="none" stroke="#444CE7" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <!-- Events (Duplicate) -->
+                            <div class="tool-item flex items-center justify-between bg-[#161725] rounded-lg p-3 transition-colors" data-tool="events-2" data-added="false">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 flex items-center justify-center">
+                                        <svg class="w-14 h-14 text-white" fill="#636E85" viewBox="0 0 33 32">
+                                            <path d="M7.92857 4C6.0375 4 4.5 5.5375 4.5 7.42857V24.5714C4.5 26.4625 6.0375 28 7.92857 28H25.0714C26.9625 28 28.5 26.4625 28.5 24.5714V7.42857C28.5 5.5375 26.9625 4 25.0714 4H7.92857ZM23.8446 8.5L18.2839 14.8536L24.825 23.5H19.7036L15.6964 18.2554L11.1054 23.5H8.56071L14.5071 16.7018L8.23393 8.5H13.4839L17.1107 13.2946L21.3 8.5H23.8446ZM21.8196 21.9786L12.7179 9.94107H11.2018L20.4054 21.9786H21.8143H21.8196Z"/>
+                                        </svg>
+                                    </div>
+                                    <span class="text-white text-[18px]">X/Twitter</span>
+                                </div>
+                                <button class="tool-btn w-8 h-8 rounded-lg flex items-center justify-center hover:bg-[#191D40] transition-colors">
+                                    <svg class="w-14 h-14 text-white" fill="none" stroke="#444CE7" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <!-- Most Active Tickers (Third) -->
+                            <div class="tool-item flex items-center justify-between bg-[#161725] rounded-lg p-3 transition-colors" data-tool="most-active-tickers-3" data-added="false">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 rounded-lg flex items-center justify-center">
+                                        <svg class="w-8 h-8 text-white" fill="none" stroke="#636E85" viewBox="0 0 29 30">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.8334 9.66663V5.66663L23.8334 1.66663L25.1667 4.33329L27.8334 5.66663L23.8334 9.66663H19.8334ZM19.8334 9.66663L14.5 14.9999M27.8334 15C27.8334 22.3638 21.8639 28.3333 14.5001 28.3333C7.13628 28.3333 1.16675 22.3638 1.16675 15C1.16675 7.63616 7.13628 1.66663 14.5001 1.66663M21.1667 15C21.1667 18.6819 18.182 21.6666 14.5001 21.6666C10.8182 21.6666 7.83341 18.6819 7.83341 15C7.83341 11.3181 10.8182 8.33329 14.5001 8.33329"></path>
+                                        </svg>
+                                    </div>
+                                    <span class="text-white text-[18px]">Most Active Tickers</span>
+                                </div>
+                                <button class="tool-btn w-8 h-8 rounded-lg flex items-center justify-center hover:bg-[#191D40] transition-colors">
+                                    <svg class="w-14 h-14 text-white" fill="none" stroke="#444CE7" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <!-- X/Twitter -->
+                            <div class="tool-item flex items-center justify-between bg-[#161725] rounded-lg p-3 transition-colors" data-tool="x-twitter" data-added="false">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 flex items-center justify-center">
+                                        <svg class="w-14 h-14 text-white" fill="none" stroke="#636E85" viewBox="0 0 33 32">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16.5001 16L3.60912 12.594C2.77974 15.7331 3.12426 19.0669 4.57804 21.9701C6.03182 24.8732 8.49496 27.1461 11.5053 28.3624L16.5001 16ZM16.5001 16L16.6397 2.66736C13.6808 2.63637 10.7957 3.59053 8.43878 5.37956C6.08182 7.16859 4.38694 9.69083 3.62109 12.549L16.5001 16ZM29.8334 16C29.8334 23.3638 23.8639 29.3333 16.5001 29.3333C9.1363 29.3333 3.16676 23.3638 3.16676 16C3.16676 8.63616 9.1363 2.66663 16.5001 2.66663C23.8639 2.66663 29.8334 8.63616 29.8334 16Z"></path>
+                                        </svg>
+                                    </div>
+                                    <span class="text-white text-[18px]">Charts</span>
+                                </div>
+                                <button class="tool-btn w-8 h-8 rounded-lg flex items-center justify-center hover:bg-[#191D40] transition-colors">
+                                    <svg class="w-14 h-14 text-white" fill="none" stroke="#444CE7" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <!-- Pie Chart -->
+                            <div class="tool-item flex items-center justify-between bg-[#161725] rounded-lg p-3 transition-colors" data-tool="pie-chart" data-added="false">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 flex items-center justify-center">
+                                        <svg class="w-14 h-14 text-white" fill="none" stroke="#636E85" viewBox="0 0 32 32">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M28 13.3333H4M21.3333 2.66663V7.99996M10.6667 2.66663V7.99996M10.4 29.3333H21.6C23.8402 29.3333 24.9603 29.3333 25.816 28.8973C26.5686 28.5138 27.1805 27.9019 27.564 27.1493C28 26.2936 28 25.1735 28 22.9333V11.7333C28 9.49308 28 8.37298 27.564 7.51733C27.1805 6.76468 26.5686 6.15276 25.816 5.76927C24.9603 5.33329 23.8402 5.33329 21.6 5.33329H10.4C8.15979 5.33329 7.03969 5.33329 6.18404 5.76927C5.43139 6.15276 4.81947 6.76468 4.43597 7.51733C4 8.37298 4 9.49308 4 11.7333V22.9333C4 25.1735 4 26.2936 4.43597 27.1493C4.81947 27.9019 5.43139 28.5138 6.18404 28.8973C7.03969 29.3333 8.15979 29.3333 10.4 29.3333Z"></path>
+                                        </svg>
+                                    </div>
+                                    <span class="text-white text-[18px]">Events</span>
+                                </div>
+                                <button class="tool-btn w-8 h-8 rounded-lg flex items-center justify-center hover:bg-[#191D40] transition-colors">
+                                    <svg class="w-14 h-14 text-white" fill="none" stroke="#444CE7" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <!-- Line Chart -->
+                                <div class="tool-item flex items-center justify-between bg-[#161725] rounded-lg p-3 transition-colors" data-tool="line-chart" data-added="false">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 flex items-center justify-center">
+                                        <svg class="w-14 h-14 text-white" fill="#636E85" viewBox="0 0 33 32">
+                                            <path d="M7.92857 4C6.0375 4 4.5 5.5375 4.5 7.42857V24.5714C4.5 26.4625 6.0375 28 7.92857 28H25.0714C26.9625 28 28.5 26.4625 28.5 24.5714V7.42857C28.5 5.5375 26.9625 4 25.0714 4H7.92857ZM23.8446 8.5L18.2839 14.8536L24.825 23.5H19.7036L15.6964 18.2554L11.1054 23.5H8.56071L14.5071 16.7018L8.23393 8.5H13.4839L17.1107 13.2946L21.3 8.5H23.8446ZM21.8196 21.9786L12.7179 9.94107H11.2018L20.4054 21.9786H21.8143H21.8196Z"/>
+                                        </svg>
+                                    </div>
+                                    <span class="text-white text-[18px]">X/Twiter</span>
+                                </div>
+                                <button class="tool-btn w-8 h-8 rounded-lg flex items-center justify-center transition-colors">
+                                    <svg class="w-14 h-14 text-white" fill="none" stroke="#444CE7" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <!-- Area Chart -->
+                                <div class="tool-item flex items-center justify-between bg-[#161725] rounded-lg p-3 transition-colors" data-tool="area-chart" data-added="false">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 flex items-center justify-center">
+                                        <svg class="w-14 h-14 text-white" fill="none" stroke="#636E85" viewBox="0 0 29 30">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.8334 9.66663V5.66663L23.8334 1.66663L25.1667 4.33329L27.8334 5.66663L23.8334 9.66663H19.8334ZM19.8334 9.66663L14.5 14.9999M27.8334 15C27.8334 22.3638 21.8639 28.3333 14.5001 28.3333C7.13628 28.3333 1.16675 22.3638 1.16675 15C1.16675 7.63616 7.13628 1.66663 14.5001 1.66663M21.1667 15C21.1667 18.6819 18.182 21.6666 14.5001 21.6666C10.8182 21.6666 7.83341 18.6819 7.83341 15C7.83341 11.3181 10.8182 8.33329 14.5001 8.33329"></path>
+                                        </svg>
+                                    </div>
+                                    <span class="text-white text-[18px]">Most Active Tickers</span>
+                                </div>
+                                <button class="tool-btn w-8 h-8 rounded-lg flex items-center justify-center hover:bg-[#191D40] transition-colors">
+                                    <svg class="w-14 h-14 text-white" fill="none" stroke="#444CE7" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <!-- Candlestick Chart -->
+                            <div class="tool-item flex items-center justify-between bg-[#161725] rounded-lg p-3 transition-colors" data-tool="candlestick-chart" data-added="false">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 flex items-center justify-center">
+                                        <svg class="w-14 h-14 text-white" fill="none" stroke="#636E85" viewBox="0 0 32 32">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.6667 9.33333V22.6667M16 14.6667V22.6667M21.3333 20V22.6667M10.4 28H21.6C23.8402 28 24.9603 28 25.816 27.564C26.5686 27.1805 27.1805 26.5686 27.564 25.816C28 24.9603 28 23.8402 28 21.6V10.4C28 8.15979 28 7.03969 27.564 6.18404C27.1805 5.43139 26.5686 4.81947 25.816 4.43597C24.9603 4 23.8402 4 21.6 4H10.4C8.15979 4 7.03969 4 6.18404 4.43597C5.43139 4.81947 4.81947 5.43139 4.43597 6.18404C4 7.03969 4 8.15979 4 10.4V21.6C4 23.8402 4 24.9603 4.43597 25.816C4.81947 26.5686 5.43139 27.1805 6.18404 27.564C7.03969 28 8.15979 28 10.4 28Z"></path>
+                                        </svg>
+                                    </div>
+                                    <span class="text-white text-[18px]">Charts</span>
+                                </div>
+                                <button class="tool-btn w-8 h-8 rounded-lg flex items-center justify-center hover:bg-[#191D40] transition-colors">
+                                    <svg class="w-14 h-14 text-white" fill="none" stroke="#444CE7" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Footer -->
+                <div class="flex items-center justify-end space-x-3 p-6 border-t border-gray-700 flex-shrink-0">
+                    <button id="cancelAddLayoutBtn" class="px-6 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-500 transition-colors">
+                        Cancel
+                    </button>
+                    <button id="addLayoutBtn" class="px-6 py-2 bg-[#3538CD] text-white rounded-lg transition-colors hover:bg-[#2A2BA3] cursor-pointer">
+                        Add Layout
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    <script>
+        // Add click functionality to cards and layout items
+        document.querySelectorAll('.cursor-pointer').forEach(element => {
+            element.addEventListener('click', function() {
+                // Add click animation
+                this.style.transform = 'scale(0.98)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 150);
+                
+                // Handle different actions based on element
+                if (this.querySelector('h3').textContent.includes('Create New Layout')) {
+                    // Open modal
+                    document.getElementById('createLayoutModal').classList.remove('hidden');
+                } else if (this.querySelector('h3').textContent.includes('Load Saved Layout')) {
+                    console.log('Loading saved layout...');
+                    // Add your load layout logic here
+                } else {
+                    const layoutName = this.querySelector('h3').textContent;
+                    console.log(`Loading layout: ${layoutName}`);
+                    // Add your load specific layout logic here
+                }
+            });
+        });
+
+        // Modal functionality
+        const modal = document.getElementById('createLayoutModal');
+        const closeModal = document.getElementById('closeModal');
+        const cancelBtn = document.getElementById('cancelBtn');
+        const createBtn = document.getElementById('createBtn');
+        const layoutNameInput = document.getElementById('layoutName');
+
+        // Close modal functions
+        function closeModalFunction() {
+            modal.classList.add('hidden');
+            // Reset form
+            layoutNameInput.value = '';
+            resetAllTools();
+            updateCreateButton();
+        }
+
+        closeModal.addEventListener('click', closeModalFunction);
+        cancelBtn.addEventListener('click', closeModalFunction);
+
+        // Close modal when clicking outside
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeModalFunction();
+            }
+        });
+
+        // Tool selection functionality
+        function toggleTool(toolItem) {
+            const isAdded = toolItem.getAttribute('data-added') === 'true';
+            const button = toolItem.querySelector('.tool-btn');
+            
+            if (isAdded) {
+                // Remove tool
+                toolItem.setAttribute('data-added', 'false');
+                toolItem.classList.remove('bg-primary', 'border-primary');
+                toolItem.classList.add('bg-[#161725]');
+                button.innerHTML = `
+                    <svg class="w-14 h-14 text-white" fill="none" stroke="#444CE7" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                    </svg>
+                `;
+                button.classList.remove('bg-[#444CE7]');
+            } else {
+                // Add tool
+                toolItem.setAttribute('data-added', 'true');
+                toolItem.classList.remove('bg-[#161725]');
+                toolItem.classList.add('bg-primary', 'border-primary');
+                button.innerHTML = `
+                    <svg class="w-14 h-14 text-white" fill="none" stroke="white" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 12h12"></path>
+                    </svg>
+                `;
+                button.classList.add('bg-[#444CE7]');
+            }
+            
+            updateCreateButton();
+        }
+
+        // Add tool click listeners
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.tool-btn') || e.target.closest('.tool-item')) {
+                e.preventDefault();
+                const toolItem = e.target.closest('.tool-item');
+                toggleTool(toolItem);
+            }
+        });
+
+        // Reset all tools to unselected state
+        function resetAllTools() {
+            document.querySelectorAll('.tool-item').forEach(tool => {
+                tool.setAttribute('data-added', 'false');
+                tool.classList.remove('bg-primary', 'border-primary');
+                tool.classList.add('bg-light-gray');
+                const button = tool.querySelector('.tool-btn');
+                button.innerHTML = `
+                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                    </svg>
+                `;
+            });
+        }
+
+        // Update create button state
+        function updateCreateButton() {
+            const hasName = layoutNameInput.value.trim().length > 0;
+            const hasSelectedTools = document.querySelectorAll('.tool-item[data-added="true"]').length > 0;
+            
+            if (hasName && hasSelectedTools) {
+                createBtn.disabled = false;
+                createBtn.classList.remove('bg-gray-600');
+                createBtn.classList.add('bg-[#3538CD]');
+            } else {
+                createBtn.disabled = true;
+                createBtn.classList.remove('bg-[#3538CD]');
+                createBtn.classList.add('bg-gray-600');
+            }
+        }
+
+        // Listen for layout name input changes
+        layoutNameInput.addEventListener('input', updateCreateButton);
+
+        // Create layout button functionality
+        createBtn.addEventListener('click', function() {
+            if (!this.disabled) {
+                const layoutName = layoutNameInput.value.trim();
+                const selectedTools = Array.from(document.querySelectorAll('.tool-item[data-added="true"]'))
+                    .map(tool => tool.getAttribute('data-tool'));
+                
+                console.log('Creating layout:', layoutName);
+                console.log('Selected tools:', selectedTools);
+                
+                // Close current modal and open Add Layout modal
+                closeModalFunction();
+                
+                // Open Add Layout modal
+                document.getElementById('addLayoutModal').classList.remove('hidden');
+                
+                // Add your layout creation logic here
+            }
+        });
+
+        // Add Layout Modal functionality
+        const addLayoutModal = document.getElementById('addLayoutModal');
+        const closeAddLayoutModal = document.getElementById('closeAddLayoutModal');
+        const cancelAddLayoutBtn = document.getElementById('cancelAddLayoutBtn');
+        const addLayoutBtn = document.getElementById('addLayoutBtn');
+
+        // Close Add Layout modal functions
+        function closeAddLayoutModalFunction() {
+            addLayoutModal.classList.add('hidden');
+            // Reset tools in Add Layout modal
+            resetAllAddLayoutTools();
+        }
+
+        closeAddLayoutModal.addEventListener('click', closeAddLayoutModalFunction);
+        cancelAddLayoutBtn.addEventListener('click', closeAddLayoutModalFunction);
+
+        // Close Add Layout modal when clicking outside
+        addLayoutModal.addEventListener('click', function(e) {
+            if (e.target === addLayoutModal) {
+                closeAddLayoutModalFunction();
+            }
+        });
+
+        // Add Layout tool selection functionality
+        function toggleAddLayoutTool(toolItem) {
+            const isAdded = toolItem.getAttribute('data-added') === 'true';
+            const button = toolItem.querySelector('.tool-btn');
+            const iconSvg = toolItem.querySelector('.tool-icon svg');
+            const labelSpan = toolItem.querySelector('.tool-label');
+            
+            if (isAdded) {
+                // Remove tool
+                toolItem.setAttribute('data-added', 'false');
+                toolItem.classList.remove('bg-primary', 'border-primary');
+                toolItem.classList.remove('border-[#3538CD]', 'border-2');
+                toolItem.classList.add('bg-[#161725]');
+                button.innerHTML = `
+                    <svg class="w-14 h-14 text-white" fill="none" stroke="#444CE7" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                    </svg>
+                `;
+                button.classList.remove('bg-[#444CE7]');
+                
+                // Reset icon stroke color
+                if (iconSvg) {
+                    iconSvg.setAttribute('stroke', '#636E85');
+                    iconSvg.setAttribute('fill', '#636E85');
+                }
+                
+                // Reset label color
+                if (labelSpan) {
+                    labelSpan.classList.remove('text-[#191D40]');
+                    labelSpan.classList.add('text-white');
+                }
+            } else {
+                // Add tool
+                toolItem.setAttribute('data-added', 'true');
+                toolItem.classList.remove('bg-[#161725]');
+                toolItem.classList.add('bg-primary', 'border-primary');
+                toolItem.classList.add('border-[#3538CD]', 'border-2');
+                button.innerHTML = `
+                    <svg class="w-14 h-14 text-white" fill="none" stroke="white" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 12h12"></path>
+                    </svg>
+                `;
+                button.classList.add('bg-[#444CE7]');
+                
+                // Change icon stroke color to blue
+                if (iconSvg) {
+                    iconSvg.setAttribute('stroke', '#444CE7');
+                    iconSvg.setAttribute('fill', '#444CE7');
+                }
+                
+                // Change label color
+                if (labelSpan) {
+                    labelSpan.classList.remove('text-white');
+                    labelSpan.classList.add('text-[#191D40]');
+                }
+            }
+        }
+
+        // Add tool click listeners for Add Layout modal
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.tool-btn') || e.target.closest('.tool-item')) {
+                e.preventDefault();
+                const toolItem = e.target.closest('.tool-item');
+                // Check if we're in Add Layout modal
+                if (addLayoutModal && !addLayoutModal.classList.contains('hidden')) {
+                    toggleAddLayoutTool(toolItem);
+                }
+            }
+        });
+
+        // Reset all tools in Add Layout modal to unselected state
+        function resetAllAddLayoutTools() {
+            document.querySelectorAll('.tool-item').forEach(tool => {
+                tool.setAttribute('data-added', 'false');
+                tool.classList.remove('bg-primary', 'border-primary');
+                tool.classList.remove('border-[#3538CD]', 'border-2');
+                tool.classList.add('bg-[#161725]');
+                const button = tool.querySelector('.tool-btn');
+                const iconSvg = tool.querySelector('.tool-icon svg');
+                const labelSpan = tool.querySelector('.tool-label');
+                
+                button.innerHTML = `
+                    <svg class="w-14 h-14 text-white" fill="none" stroke="#444CE7" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                    </svg>
+                `;
+                button.classList.remove('bg-[#444CE7]');
+                
+                // Reset icon stroke color
+                if (iconSvg) {
+                    iconSvg.setAttribute('stroke', '#636E85');
+                    iconSvg.setAttribute('fill', '#636E85');
+                }
+                
+                // Reset label color
+                if (labelSpan) {
+                    labelSpan.classList.remove('text-[#191D40]');
+                    labelSpan.classList.add('text-white');
+                }
+            });
+        }
+
+        // Add Layout button functionality
+        addLayoutBtn.addEventListener('click', function() {
+            const selectedTools = Array.from(document.querySelectorAll('.tool-item[data-added="true"]'))
+                .map(tool => tool.getAttribute('data-tool'));
+            
+            console.log('Adding layout with tools:', selectedTools);
+            
+            // Close Add Layout modal
+            closeAddLayoutModalFunction();
+            
+            // Add your add layout logic here
+        });
+
+        // Add keyboard navigation support
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                const focused = document.activeElement;
+                if (focused && focused.classList.contains('cursor-pointer')) {
+                    focused.click();
+                }
+            }
+            
+            // Close modal with Escape key
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                closeModalFunction();
+            }
+            
+            // Close Add Layout modal with Escape key
+            if (e.key === 'Escape' && addLayoutModal && !addLayoutModal.classList.contains('hidden')) {
+                closeAddLayoutModalFunction();
+            }
+        });
+    </script>
+</body>
+</html>
