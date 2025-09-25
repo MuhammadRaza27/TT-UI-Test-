@@ -367,7 +367,7 @@
                     <!-- Tools Section -->
                     <div>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
-                            <!-- Bar Chart -->
+                            <!--Chart -->
                             <div class="tool-item flex items-center justify-between bg-[#161725] rounded-lg p-3 transition-colors" data-tool="bar-chart" data-added="false">
                                 <div class="flex items-center space-x-3">
                                     <div class="w-8 h-8 rounded-lg flex items-center justify-center">
@@ -418,7 +418,7 @@
                                 </button>
                             </div>
 
-                            <!-- Events -->
+                            <!-- Most Active Tickers -->
                             <div class="tool-item flex items-center justify-between bg-[#161725] rounded-lg p-3 transition-colors" data-tool="events" data-added="false">
                                 <div class="flex items-center space-x-3">
                                     <div class="w-8 h-8 flex items-center justify-center">
@@ -435,7 +435,7 @@
                                 </button>
                             </div>
 
-                            <!-- Most Active Tickers (Duplicate) -->
+                            <!-- Events-->
                             <div class="tool-item flex items-center justify-between bg-[#161725] rounded-lg p-3 transition-colors" data-tool="most-active-tickers-2" data-added="false">
                                 <div class="flex items-center space-x-3">
                                     <div class="w-8 h-8 flex items-center justify-center">
@@ -452,7 +452,7 @@
                                 </button>
                             </div>
 
-                            <!-- Events (Duplicate) -->
+                            <!-- Twitter -->
                             <div class="tool-item flex items-center justify-between bg-[#161725] rounded-lg p-3 transition-colors" data-tool="events-2" data-added="false">
                                 <div class="flex items-center space-x-3">
                                     <div class="w-8 h-8 flex items-center justify-center">
@@ -486,7 +486,7 @@
                                 </button>
                             </div>
 
-                            <!-- X/Twitter -->
+                            <!-- Charts-->
                             <div class="tool-item flex items-center justify-between bg-[#161725] rounded-lg p-3 transition-colors" data-tool="x-twitter" data-added="false">
                                 <div class="flex items-center space-x-3">
                                     <div class="w-8 h-8 flex items-center justify-center">
@@ -503,7 +503,7 @@
                                 </button>
                             </div>
 
-                            <!-- Pie Chart -->
+                            <!-- Events -->
                             <div class="tool-item flex items-center justify-between bg-[#161725] rounded-lg p-3 transition-colors" data-tool="pie-chart" data-added="false">
                                 <div class="flex items-center space-x-3">
                                     <div class="w-8 h-8 flex items-center justify-center">
@@ -520,7 +520,7 @@
                                 </button>
                             </div>
 
-                            <!-- Line Chart -->
+                            <!-- Twitter -->
                                 <div class="tool-item flex items-center justify-between bg-[#161725] rounded-lg p-3 transition-colors" data-tool="line-chart" data-added="false">
                                 <div class="flex items-center space-x-3">
                                     <div class="w-8 h-8 flex items-center justify-center">
@@ -537,7 +537,7 @@
                                 </button>
                             </div>
 
-                            <!-- Area Chart -->
+                            <!-- Most Active Tickers -->
                                 <div class="tool-item flex items-center justify-between bg-[#161725] rounded-lg p-3 transition-colors" data-tool="area-chart" data-added="false">
                                 <div class="flex items-center space-x-3">
                                     <div class="w-8 h-8 flex items-center justify-center">
@@ -554,7 +554,7 @@
                                 </button>
                             </div>
 
-                            <!-- Candlestick Chart -->
+                            <!-- Chart -->
                             <div class="tool-item flex items-center justify-between bg-[#161725] rounded-lg p-3 transition-colors" data-tool="candlestick-chart" data-added="false">
                                 <div class="flex items-center space-x-3">
                                     <div class="w-8 h-8 flex items-center justify-center">
@@ -683,13 +683,14 @@
             document.querySelectorAll('.tool-item').forEach(tool => {
                 tool.setAttribute('data-added', 'false');
                 tool.classList.remove('bg-primary', 'border-primary');
-                tool.classList.add('bg-light-gray');
+                tool.classList.add('bg-[#161725]');
                 const button = tool.querySelector('.tool-btn');
                 button.innerHTML = `
-                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-14 h-14 text-white" fill="none" stroke="#444CE7" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
                     </svg>
                 `;
+                button.classList.remove('bg-[#444CE7]');
             });
         }
 
