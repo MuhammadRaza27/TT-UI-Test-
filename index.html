@@ -98,7 +98,7 @@
         </div>
 
         <!-- Action Cards Section -->
-        <div class="grid grid-cols-1 md:grid-cols-2 max-w-[800px] w-full gap-8 mb-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 max-w-[800px] w-full gap-8 mb-8">
             <!-- Create New Layout Card -->
             <div class="border border-[#444CE7] rounded-xl p-8 hover: transition-all duration-300 cursor-pointer group">
                 <div class="text-center">
@@ -122,7 +122,7 @@
                         </svg>
                     </div>
                     <h3 class="text-xl text-[#828DA4] mb-3 ">Create New Layout</h3>
-                    <p class="text-[#828DA4]">Start fresh with empty windows and add tools.</p>
+                    <p class=" text-[14px] text-[#828DA4]">Start fresh with empty windows and add tools.</p>
                 </div>
             </div>
 
@@ -135,14 +135,14 @@
                         </svg>
                     </div>
                     <h3 class="text-xl text-[#828DA4] mb-3">Load Saved Layout</h3>
-                    <p class="text-[#828DA4]">Open a layout you saved earlier with its tools.</p>
+                    <p class=" text-[14px] text-[#828DA4]">Open a layout you saved earlier with its tools.</p>
                 </div>
             </div>
         </div>
 
         <!-- Saved Layouts Section -->
         <div id="savedLayoutsSection" class="mb-16">
-            <div class="flex items-center justify-center mb-4">
+            <div class="flex items-center justify-center mb-6">
                 <h3 class="text-[21px] font-medium text-white">Or Quickly load a recent layout</h3>
             </div>
             <div id="savedLayoutsList" class="space-y-3">
@@ -400,21 +400,21 @@
         </div>
 
         <!-- Toast Notification -->
-        <div id="toastNotification" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
-            <div class="bg-[#10133A] rounded-lg p-4 w-80 border border-[#2A2A2A] shadow-lg">
-                <div class="flex items-start justify-between mb-2">
+        <div id="toastNotification" class="fixed top-4 right-4 z-50 hidden transform translate-x-full transition-transform duration-300 ease-out">
+            <div class="bg-[#10133A] rounded-lg p-4 w-80 border border-[#2A2A2A] shadow-xl backdrop-blur-sm">
+                <div class="flex items-start justify-between mb-3">
                     <div>
                         <h4 class="text-white font-bold text-[16px]">Layout Saved!</h4>
-                        <p class="text-white text-[14px] mt-1">"My Most Used Layout" has been saved.</p>
+                        <p class="text-gray-300 text-[14px] mt-1">"My Most Used Layout" has been saved.</p>
                     </div>
-                    <button id="closeToast" class="text-white hover:text-gray-300 transition-colors ml-2">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <button id="closeToast" class="text-gray-400 hover:text-white transition-colors ml-2 p-1 rounded hover:bg-gray-700">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                         </svg>
                     </button>
                 </div>
-                <div class="w-full bg-gray-400 rounded-full h-1">
-                    <div id="toastProgress" class="bg-blue-500 h-1 rounded-full transition-all ease-linear" style="width: 0%"></div>
+                <div class="w-full bg-gray-600 rounded-full h-1">
+                    <div id="toastProgress" class="h-1 rounded-full transition-all ease-linear" style="width: 0%; background-color: #444CE7;"></div>
                 </div>
             </div>
         </div>
@@ -471,9 +471,9 @@
 
         <!-- Load Saved Layouts Modal -->
         <div id="loadLayoutModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
-            <div class="bg-[#161725] rounded-xl p-6 w-full max-w-md mx-4 border border-[#2A2A2A] max-h-[80vh] flex flex-col">
-                <div class="flex items-center justify-between mb-4">
-                    <h3 class="text-[18px] font-medium text-white">Load Saved Layouts</h3>
+            <div class="bg-[#12121E] rounded-xl p-6 w-[707px] mx-4 border border-[#2A2A2A] max-h-[80vh] flex flex-col">
+                <div class="flex items-center justify-between mb-8 mt-6">
+                    <h3 class="text-[24px] font-medium text-white">Load Saved Layouts</h3>
                     <button id="closeLoadModal" class="text-white hover:text-gray-300 transition-colors">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -484,21 +484,52 @@
                 <!-- Search Bar -->
                 <div class="mb-4">
                     <div class="relative">
-                        <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-[#3538CD]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                         </svg>
                         <input 
                             type="text" 
+                            type="text[#636E85]"
                             id="layoutSearchInput"
                             placeholder="Search for layouts"
-                            class="w-full pl-10 pr-4 py-3 bg-[#2A2A2A] border border-[#2A2A2A] rounded-lg text-white placeholder-gray-400 focus:border-[#444CE7] focus:outline-none transition-colors"
+                            class="w-full pl-10 pr-4 py-3 bg-[#161725] border border-[#161725] rounded-lg text-white placeholder-gray-400 focus:border-[#444CE7] focus:outline-none transition-colors"
                         >
                     </div>
                 </div>
                 
                 <!-- Layouts List -->
-                <div id="layoutsList" class="flex-1 overflow-y-auto space-y-2">
-                    <!-- Layouts will be dynamically added here -->
+                <div id="layoutsList" class="flex-1 overflow-y-auto space-y-">
+                    <!-- Saved layouts will be dynamically added here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Delete Confirmation Modal -->
+        <div id="deleteConfirmModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+            <div class="bg-[#12121E] rounded-xl p-6 w-[517px] h-[304px] mx-4 border border-[#2A2A2A] flex flex-col">
+                <div class="flex items-center justify-between mb-6">
+                    <div class="flex items-center space-x-3">
+                        <svg class="w-8 h-8" fill="none" stroke="#F23A4C" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                        </svg>
+                        <h3 class="text-[24px] font-medium text-white">Delete Layout</h3>
+                    </div>
+                    <button id="closeDeleteModal" class="text-white hover:text-gray-300 transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="flex-1 flex items-center justify-center">
+                    <p class="text-[#C0CBE1] text-[16px] text-center">Are you sure you want to delete "My Most Used Layout"?</p>
+                </div>
+                <div class="flex justify-end space-x-3">
+                    <button id="cancelDeleteBtn" class="bg-[#2A2A2A] w-[85px] h-[40px] text-white rounded-lg hover:bg-[#3A3A3A] transition-colors flex items-center justify-center">
+                        Cancel
+                    </button>
+                    <button id="confirmDeleteBtn" class="bg-[#444CE7] w-[85px] h-[40px] text-white rounded-lg hover:bg-[#3538CD] transition-colors flex items-center justify-center">
+                        Delete
+                    </button>
                 </div>
             </div>
         </div>
@@ -924,6 +955,14 @@
         const closeLoadModal = document.getElementById('closeLoadModal');
         const layoutSearchInput = document.getElementById('layoutSearchInput');
         const layoutsList = document.getElementById('layoutsList');
+        
+        // Delete Confirmation Modal functionality
+        const deleteConfirmModal = document.getElementById('deleteConfirmModal');
+        const closeDeleteModal = document.getElementById('closeDeleteModal');
+        const cancelDeleteBtn = document.getElementById('cancelDeleteBtn');
+        const confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
+        
+        let layoutToDelete = null;
 
         function loadSavedLayouts() {
             // Clear existing layouts
@@ -935,15 +974,24 @@
             // Create layout items
             savedLayouts.forEach((layout, index) => {
                 const layoutItem = document.createElement('div');
-                layoutItem.className = 'p-3 bg-[#2A2A2A] rounded-lg cursor-pointer hover:bg-[#3A3A3A] transition-colors group flex items-center justify-between';
+                layoutItem.className = 'layout-item p-3 rounded-lg cursor-pointer hover:bg-[#4A4A4A] transition-colors flex items-center justify-between';
                 layoutItem.innerHTML = `
-                    <span class="text-white text-[16px]">${layout.name}</span>
-                    <button class="delete-layout-btn opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-red-400 hover:text-red-300 p-1">
+                    <span class="text-[#C0CBE1] text-[16px]">${layout.name}</span>
+                    <button class="delete-layout-btn text-white hover:text-gray-300 p-1 rounded hover:bg-red-900/20 transition-all duration-200" style="opacity: 0;">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
                         </svg>
                     </button>
                 `;
+                
+                // Add hover functionality for delete button
+                const deleteBtn = layoutItem.querySelector('.delete-layout-btn');
+                layoutItem.addEventListener('mouseenter', () => {
+                    deleteBtn.style.opacity = '1';
+                });
+                layoutItem.addEventListener('mouseleave', () => {
+                    deleteBtn.style.opacity = '0';
+                });
                 
                 // Add click functionality to load layout
                 layoutItem.addEventListener('click', function(e) {
@@ -952,23 +1000,16 @@
                         return;
                     }
                     console.log(`Loading layout: ${layout.name}`);
-                    // Here you can add logic to actually load the layout
                     closeLoadModalFunc();
                 });
                 
                 // Add delete functionality
-                const deleteBtn = layoutItem.querySelector('.delete-layout-btn');
                 deleteBtn.addEventListener('click', function(e) {
                     e.stopPropagation(); // Prevent layout item click
                     
-                    // Remove layout from localStorage
-                    const updatedLayouts = savedLayouts.filter((_, i) => i !== index);
-                    localStorage.setItem('savedLayouts', JSON.stringify(updatedLayouts));
-                    
-                    // Refresh the layouts list
-                    loadSavedLayouts();
-                    
-                    console.log(`Deleted layout: ${layout.name}`);
+                    // Store layout to delete and show confirmation modal
+                    layoutToDelete = { layout, index };
+                    deleteConfirmModal.classList.remove('hidden');
                 });
                 
                 layoutsList.appendChild(layoutItem);
@@ -977,6 +1018,43 @@
 
         function closeLoadModalFunc() {
             loadLayoutModal.classList.add('hidden');
+        }
+
+        // Search functionality
+        if (layoutSearchInput) {
+            layoutSearchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                const layoutItems = layoutsList.querySelectorAll('.layout-item');
+                
+                layoutItems.forEach(item => {
+                    const layoutName = item.querySelector('span').textContent.toLowerCase();
+                    if (layoutName.includes(searchTerm)) {
+                        item.style.display = 'flex';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        }
+
+        // Delete confirmation modal functions
+        function closeDeleteModalFunc() {
+            deleteConfirmModal.classList.add('hidden');
+            layoutToDelete = null;
+        }
+
+        function confirmDelete() {
+            if (layoutToDelete) {
+                const savedLayouts = JSON.parse(localStorage.getItem('savedLayouts') || '[]');
+                const updatedLayouts = savedLayouts.filter((_, i) => i !== layoutToDelete.index);
+                localStorage.setItem('savedLayouts', JSON.stringify(updatedLayouts));
+                
+                // Refresh the layouts list
+                loadSavedLayouts();
+                
+                console.log(`Deleted layout: ${layoutToDelete.layout.name}`);
+                closeDeleteModalFunc();
+            }
         }
 
         // Event listeners for Load Layout modal
@@ -989,6 +1067,28 @@
             loadLayoutModal.addEventListener('click', function(e) {
                 if (e.target === loadLayoutModal) {
                     closeLoadModalFunc();
+                }
+            });
+        }
+
+        // Event listeners for Delete Confirmation modal
+        if (closeDeleteModal) {
+            closeDeleteModal.addEventListener('click', closeDeleteModalFunc);
+        }
+
+        if (cancelDeleteBtn) {
+            cancelDeleteBtn.addEventListener('click', closeDeleteModalFunc);
+        }
+
+        if (confirmDeleteBtn) {
+            confirmDeleteBtn.addEventListener('click', confirmDelete);
+        }
+
+        // Close delete modal when clicking outside
+        if (deleteConfirmModal) {
+            deleteConfirmModal.addEventListener('click', function(e) {
+                if (e.target === deleteConfirmModal) {
+                    closeDeleteModalFunc();
                 }
             });
         }
@@ -1375,8 +1475,10 @@
         const toastProgress = document.getElementById('toastProgress');
 
         function showToast() {
-            // Show toast
+            // Show toast and slide in from right
             toastNotification.classList.remove('hidden');
+            toastNotification.classList.remove('translate-x-full');
+            toastNotification.classList.add('translate-x-0');
             
             // Reset progress bar to 0%
             toastProgress.style.width = '0%';
@@ -1393,7 +1495,14 @@
         }
 
         function hideToast() {
-            toastNotification.classList.add('hidden');
+            // Slide out to the right
+            toastNotification.classList.remove('translate-x-0');
+            toastNotification.classList.add('translate-x-full');
+            
+            // Hide after animation completes
+            setTimeout(() => {
+                toastNotification.classList.add('hidden');
+            }, 300);
         }
 
         // Close toast button
