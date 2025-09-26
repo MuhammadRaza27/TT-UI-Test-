@@ -279,10 +279,12 @@ function confirmDelete() {
         loadSavedLayouts();
         
         console.log(`Deleted layout: ${layoutToDelete.layout.name}`);
-        closeDeleteModalFunc();
         
-        // Show toast notification for successful deletion
+        // Show toast notification for successful deletion BEFORE closing modal
         showDeleteToast();
+        
+        // Close modal after showing toast
+        closeDeleteModalFunc();
     }
 }
 
@@ -751,7 +753,9 @@ function showDeleteToast() {
     
     if (toastTitle && toastMessage) {
         toastTitle.textContent = 'Layout Deleted!';
-        toastMessage.textContent = `"${layoutToDelete ? layoutToDelete.layout.name : 'Layout'}" has been deleted successfully.`;
+        const layoutName = layoutToDelete ? layoutToDelete.layout.name : 'Layout';
+        toastMessage.textContent = `"${layoutName}  "  has been deleted  .`;
+        console.log('Toast showing for layout:', layoutName); // Debug log
     }
     
     // Show toast and slide in from right
