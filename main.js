@@ -280,6 +280,9 @@ function confirmDelete() {
         
         console.log(`Deleted layout: ${layoutToDelete.layout.name}`);
         closeDeleteModalFunc();
+        
+        // Show toast notification for successful deletion
+        showDeleteToast();
     }
 }
 
@@ -701,6 +704,15 @@ const closeToast = document.getElementById('closeToast');
 const toastProgress = document.getElementById('toastProgress');
 
 function showToast() {
+    // Reset toast content for save
+    const toastTitle = toastNotification.querySelector('h4');
+    const toastMessage = toastNotification.querySelector('p');
+    
+    if (toastTitle && toastMessage) {
+        toastTitle.textContent = 'Layout Saved!';
+        toastMessage.textContent = '"My Most Used Layout" has been saved.';
+    }
+    
     // Show toast and slide in from right
     toastNotification.classList.remove('hidden');
     toastNotification.classList.remove('translate-x-full');
@@ -729,6 +741,36 @@ function hideToast() {
     setTimeout(() => {
         toastNotification.classList.add('hidden');
     }, 300);
+}
+
+// Delete toast notification function
+function showDeleteToast() {
+    // Update toast content for deletion
+    const toastTitle = toastNotification.querySelector('h4');
+    const toastMessage = toastNotification.querySelector('p');
+    
+    if (toastTitle && toastMessage) {
+        toastTitle.textContent = 'Layout Deleted!';
+        toastMessage.textContent = `"${layoutToDelete ? layoutToDelete.layout.name : 'Layout'}" has been deleted successfully.`;
+    }
+    
+    // Show toast and slide in from right
+    toastNotification.classList.remove('hidden');
+    toastNotification.classList.remove('translate-x-full');
+    toastNotification.classList.add('translate-x-0');
+    
+    // Reset progress bar to 0%
+    toastProgress.style.width = '0%';
+    
+    // Animate progress bar from 0% to 100%
+    setTimeout(() => {
+        toastProgress.style.width = '100%';
+    }, 100);
+    
+    // Auto hide after 3 seconds
+    setTimeout(() => {
+        hideToast();
+    }, 3000);
 }
 
 // Close toast button
