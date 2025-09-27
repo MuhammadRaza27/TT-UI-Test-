@@ -235,6 +235,13 @@ function loadSavedLayouts() {
             
             // Store layout to delete and show confirmation modal
             layoutToDelete = { layout, index };
+            
+            // Update modal text with selected layout name
+            const deleteModalText = document.getElementById('deleteModalText');
+            if (deleteModalText) {
+                deleteModalText.textContent = `Are you sure you want to delete "${layout.name}"?`;
+            }
+            
             deleteConfirmModal.classList.remove('hidden');
         });
         
